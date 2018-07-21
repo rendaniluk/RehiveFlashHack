@@ -15,6 +15,8 @@ targetLog.addEventListener("click", function() {
     company: company.value,
     password: pwords.value
   };
+  //console.log(creds.user);
+  localStorage.setItem("email", creds.user);
 
   $.ajax({
     url: "https://api.rehive.com/3/auth/login/",
@@ -30,6 +32,8 @@ targetLog.addEventListener("click", function() {
     // setDefaultData();
     if (results.status == "success") {
       localStorage.setItem("token", results.data.token);
+      //   localStorage.setItem("email", results.data.token);
+
       window.location.replace("./payment-page.html");
     } else {
       console.log(results);

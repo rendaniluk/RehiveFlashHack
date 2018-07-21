@@ -38,25 +38,6 @@
                     <p class="welcomeName"></p>
                 </div>
                 <form>
-                    <!-- <div class="products">
-                        <h3 class="title">Balances</h3>
-                        <div class="item">
-                            <span class="price">200</span>
-
-
-                            <p class="item-name">Points</p>
-                            <p class="item-description">Can only spend points more than 1000</p>
-                        </div> -->
-                    <!-- <div class="item"><span class="price">$120</span>
-                            <p class="item-name">Product 2</p>
-                            <p class="item-description">Lorem ipsum dolor sit amet</p>
-                        </div> -->
-                    <!-- <div class="total">
-                            <span>Total</span>
-                            <span class="price">R200</span>
-                        </div>
-                    </div> -->
-                    <!-- SPEN POINTS -->
                     <div class="card-details">
                         <h2 class="title">Buy Flash Token</h2>
                         <div class="form-row">
@@ -64,12 +45,11 @@
                                 <h3></h3>
                             </div>
                             <div class="col-sm-8" style="margin-top: 10px">
-                                <input id="amount" placeholder="enter amount" type="number" value="">
+                                <label for="Amount:">
+                                    Amount
+                                    <input id="amount" placeholder="enter amount" type="number" value="">
+                                </label>
                             </div>
-                            <div class="col-sm-8" style="margin-top: 10px">
-                                <input id="account" placeholder="enter account" type="number" value="">
-                            </div>
-
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <button id='proceed' class="btn btn-primary btn-block" type="button">Proceed</button>
@@ -87,10 +67,13 @@
     <script>
         // var list = document.querySelector('#list');
         var amounts = document.querySelector('#amount');
-        var account = document.querySelector('#account')
+        // var account = document.querySelector('#account')
         var proceed = document.querySelector('#proceed');
         var aut = 'token ' + localStorage.getItem('token');
-        console.log(aut)
+        var email = localStorage.getItem('email')
+        console.log(aut);
+        console.log(email);
+
         function selectedvalue() {
             var amountValue = (amounts.value) * 0.01;
             var currencyValue = "ZAR";
@@ -121,11 +104,11 @@
 
         function sendToflash() {
             var amountValue = amounts.value;
-            var accontValue = account.value;
+            // var accontValue = account.value;
             // var listValue = list.value;
             var flashObj = {
                 amount: amountValue,
-                AccNr: accontValue
+                email: email
             }
             console.log(JSON.stringify(flashObj))
             $.ajax({
